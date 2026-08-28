@@ -1,5 +1,5 @@
 """
-IgrzyskaMC.PL - Discord Bot
+Battle Royale MC - Discord Bot
 Moduły: Tickety (ze zdjęciami), Centrum Pomocy (ze zdjęciami), Ankiety, Propozycje,
         Błędy, Powitania, Konkursy/Giveaway'e
 
@@ -47,7 +47,7 @@ from discord import app_commands
 CONFIG_PLIK = "config.json"
 
 DEFAULT_CONFIG = {
-    "nazwa_serwera": "BattleRoyale",
+    "nazwa_serwera": "Battle Royale MC",
 
     "kolory": {
         "propozycje": 0x5865F2,
@@ -390,7 +390,7 @@ class NapiszPropozycjeKartaButton(discord.ui.Button):
 
     def __init__(self):
         super().__init__(label="Napisz swoją propozycję", emoji="📝", style=discord.ButtonStyle.primary,
-                          custom_id="igrzyskamc:propozycja:napisz_karta")
+                          custom_id="battleroyalemc:propozycja:napisz_karta")
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.send_modal(ZgloszenieModal("propozycja"))
@@ -403,7 +403,7 @@ class PowiadamiajPropozycjeButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Powiadamiaj o nowych propozycjach", emoji="🔔",
                           style=discord.ButtonStyle.secondary,
-                          custom_id="igrzyskamc:propozycja:powiadamiaj")
+                          custom_id="battleroyalemc:propozycja:powiadamiaj")
 
     async def callback(self, interaction: discord.Interaction):
         rola_id = CONFIG["role"].get("powiadomienia_propozycje")
@@ -426,7 +426,7 @@ class PrzyjmijPropozycjeButton(discord.ui.Button):
 
     def __init__(self, wpis_id: str):
         super().__init__(label="Przyjęta", emoji="✅", style=discord.ButtonStyle.success,
-                          custom_id=f"igrzyskamc:propozycja:przyjmij:{wpis_id}")
+                          custom_id=f"battleroyalemc:propozycja:przyjmij:{wpis_id}")
         self.wpis_id = wpis_id
 
     async def callback(self, interaction: discord.Interaction):
@@ -447,7 +447,7 @@ class OdrzucPropozycjeButton(discord.ui.Button):
 
     def __init__(self, wpis_id: str):
         super().__init__(label="Odrzucona", emoji="❌", style=discord.ButtonStyle.danger,
-                          custom_id=f"igrzyskamc:propozycja:odrzuc:{wpis_id}")
+                          custom_id=f"battleroyalemc:propozycja:odrzuc:{wpis_id}")
         self.wpis_id = wpis_id
 
     async def callback(self, interaction: discord.Interaction):
@@ -524,7 +524,7 @@ class ZgloszeniePanel(discord.ui.LayoutView):
 
         przycisk_napisz = discord.ui.Button(label=dane["etykieta_przycisku"], emoji=dane["emoji_przycisku"],
                                              style=discord.ButtonStyle.primary,
-                                             custom_id=f"igrzyskamc:zgloszenie:{typ}:napisz")
+                                             custom_id=f"battleroyalemc:zgloszenie:{typ}:napisz")
         przycisk_napisz.callback = self.napisz
 
         opis = ("Masz pomysł na zmianę w grze? Kliknij przycisk niżej albo napisz od razu na tym "
@@ -848,7 +848,7 @@ class CentrumPomocySelect(discord.ui.Select):
         if not opcje:
             opcje = [discord.SelectOption(label="Brak pytań — wróć później", value="brak")]
         super().__init__(placeholder="Wybierz temat, w którym potrzebujesz pomocy...",
-                          options=opcje, custom_id="igrzyskamc:pomoc:select")
+                          options=opcje, custom_id="battleroyalemc:pomoc:select")
 
     async def callback(self, interaction: discord.Interaction):
         if self.values[0] == "brak":
@@ -1016,7 +1016,7 @@ def _limit_kategorii(gildia: discord.Guild, autor_id: int, klucz_kategorii: str)
 class ZamknijTicketButton(discord.ui.Button):
     def __init__(self, numer: str, disabled: bool = False):
         super().__init__(label="Zamknij ticket", emoji="🔒", style=discord.ButtonStyle.danger,
-                          custom_id=f"igrzyskamc:ticket:zamknij:{numer}", disabled=disabled)
+                          custom_id=f"battleroyalemc:ticket:zamknij:{numer}", disabled=disabled)
         self.numer = numer
 
     async def callback(self, interaction: discord.Interaction):
@@ -1196,7 +1196,7 @@ class TicketySelect(discord.ui.Select):
         if not opcje:
             opcje = [discord.SelectOption(label="Brak kategorii - skonfiguruj /tickety kategorie", value="brak")]
         super().__init__(placeholder="Wybierz kategorię ticketu...", options=opcje,
-                          custom_id="igrzyskamc:tickety:select")
+                          custom_id="battleroyalemc:tickety:select")
 
     async def callback(self, interaction: discord.Interaction):
         if self.values[0] == "brak":
@@ -1520,7 +1520,7 @@ def konkurs_wpis(konkurs_id: str) -> Optional[dict]:
 class DolaczKonkursButton(discord.ui.Button):
     def __init__(self, konkurs_id: str, disabled: bool = False):
         super().__init__(label="Kliknij, aby dołączyć do konkursu!", style=discord.ButtonStyle.success,
-                          emoji="🎉", custom_id=f"igrzyskamc:konkurs:dolacz:{konkurs_id}", disabled=disabled)
+                          emoji="🎉", custom_id=f"battleroyalemc:konkurs:dolacz:{konkurs_id}", disabled=disabled)
         self.konkurs_id = konkurs_id
 
     async def callback(self, interaction: discord.Interaction):
@@ -1561,7 +1561,7 @@ class UczestnicyKonkursButton(discord.ui.Button):
     def __init__(self, konkurs_id: str, ilosc: int):
         super().__init__(label=f"W konkursie wzięło udział {ilosc} {forma_osob(ilosc)}!",
                           style=discord.ButtonStyle.secondary, emoji="👥",
-                          custom_id=f"igrzyskamc:konkurs:licznik:{konkurs_id}", disabled=True)
+                          custom_id=f"battleroyalemc:konkurs:licznik:{konkurs_id}", disabled=True)
 
 
 class OdbierzNagrodeButton(discord.ui.Button):
@@ -1572,7 +1572,7 @@ class OdbierzNagrodeButton(discord.ui.Button):
 
     def __init__(self, konkurs_id: str):
         super().__init__(label="Otwórz ticket z nagrodą", emoji="🎁", style=discord.ButtonStyle.success,
-                          custom_id=f"igrzyskamc:konkurs:odbierz:{konkurs_id}")
+                          custom_id=f"battleroyalemc:konkurs:odbierz:{konkurs_id}")
         self.konkurs_id = konkurs_id
 
     async def callback(self, interaction: discord.Interaction):
@@ -2102,7 +2102,7 @@ class PomocSelect(discord.ui.Select):
             for klucz, dane in POMOC_KATEGORIE.items()
         ]
         super().__init__(placeholder="Wybierz kategorię komend...", options=opcje,
-                          custom_id="igrzyskamc:pomoc:kategoria", min_values=1, max_values=1)
+                          custom_id="battleroyalemc:pomoc:kategoria", min_values=1, max_values=1)
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.edit_message(view=PomocPanel(self.values[0]))
