@@ -47,7 +47,7 @@ from discord import app_commands
 CONFIG_PLIK = "config.json"
 
 DEFAULT_CONFIG = {
-    "nazwa_serwera": "IgrzyskaMC.PL",
+    "nazwa_serwera": "BattleRoyale",
 
     "kolory": {
         "propozycje": 0x5865F2,
