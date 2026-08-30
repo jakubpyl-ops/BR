@@ -104,6 +104,16 @@ DEFAULT_CONFIG = {
     # od razu po wybraniu kategorii (bez okienka).
     "ticket_kategorie": {
         "pomoc": {"etykieta": "🛠️ Pomoc techniczna", "pytania": []},
+        "rekrutacja": {
+            "etykieta": "👥 Rekrutacja",
+            "pytania": [
+                {"tresc": "Na jaką range aspirujesz?", "styl": "short", "wymagane": True, "placeholder": "np. Helper / Moderator", "max_length": 100},
+                {"tresc": "Ile masz lat?", "styl": "short", "wymagane": True, "placeholder": "np. 16", "max_length": 10},
+                {"tresc": "Dlaczego mamy wybrać właśnie Ciebie?", "styl": "paragraph", "wymagane": True, "placeholder": "Napisz, co Cię wyróżnia.", "max_length": 1000},
+                {"tresc": "Co wniesiesz do serwera?", "styl": "paragraph", "wymagane": True, "placeholder": "Opisz, jak chcesz pomóc w rozwoju serwera.", "max_length": 1000},
+                {"tresc": "Doświadczenie w administracji", "styl": "paragraph", "wymagane": True, "placeholder": "Opisz swoje wcześniejsze doświadczenie.", "max_length": 1000},
+            ],
+        },
         "zgloszenie_gracza": {
             "etykieta": "🚨 Zgłoszenie gracza",
             "pytania": [
@@ -112,8 +122,33 @@ DEFAULT_CONFIG = {
                 {"tresc": "Dowody (screeny/klipy)", "styl": "paragraph", "wymagane": False, "placeholder": "Wklej link lub napisz, że wyślesz w tickecie", "max_length": 500},
             ],
         },
-        "wspolpraca": {"etykieta": "🤝 Współpraca / Biznes", "pytania": []},
-        "inne": {"etykieta": "❓ Inne", "pytania": []},
+        "odwolanie": {
+            "etykieta": "❤️ Odwołanie od bana",
+            "pytania": [
+                {"tresc": "Nick gracza", "styl": "short", "wymagane": True, "placeholder": "np. Swequuu", "max_length": 50},
+                {"tresc": "Dlaczego ban jest niesłuszny?", "styl": "paragraph", "wymagane": True, "placeholder": "Opisz dokładnie, dlaczego chcesz odwołać bana.", "max_length": 1000},
+                {"tresc": "Screen z próby wejścia na serwer", "styl": "paragraph", "wymagane": True, "placeholder": "Wklej link do screena z próby wejścia na serwer.", "max_length": 500},
+            ],
+        },
+        "wspolpraca": {
+            "etykieta": "🤝 Współpraca / Biznes",
+            "pytania": [
+                {"tresc": "Link do Twojego Discorda / social media", "styl": "short", "wymagane": True, "placeholder": "np. https://discord.gg/twoj-serwer", "max_length": 200},
+                {"tresc": "Na czym miałaby polegać współpraca?", "styl": "paragraph", "wymagane": True, "placeholder": "Opisz swoją propozycję.", "max_length": 1000},
+            ],
+        },
+        "media": {
+            "etykieta": "📸 Media",
+            "pytania": [
+                {"tresc": "Link do Twoich sociali", "styl": "paragraph", "wymagane": True, "placeholder": "YouTube / TikTok / Twitch / Instagram", "max_length": 700},
+            ],
+        },
+        "inne": {
+            "etykieta": "❓ Inne",
+            "pytania": [
+                {"tresc": "Czego dotyczy sprawa?", "styl": "paragraph", "wymagane": True, "placeholder": "Napisz krótko, w czym mamy pomóc.", "max_length": 1000},
+            ],
+        },
     },
 
     "propozycje_glosy": {},
